@@ -39,6 +39,7 @@ public class Casino {
 	System.out.println("Ingrese su edad");
 	edad = entrada.nextInt();
 	
+	
 	if(edad > edadMin) { //Si es mayor de edad, puede acceder al sitio
 		
 		System.out.println("Bienvenido,recargue su saldo para apostar");
@@ -61,7 +62,7 @@ public class Casino {
 			
 			else {
 				
-				System.out.println("Monto mínimo de apuesta: 10000");
+				System.out.println("Error: Monto mínimo de apuesta: 10000");
 			}
 			
 			
