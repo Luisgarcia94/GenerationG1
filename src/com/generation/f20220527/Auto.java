@@ -70,6 +70,7 @@ public class Auto {
 		this.velocidad = 10d;
 	}
 	
+
 	
 }
 
