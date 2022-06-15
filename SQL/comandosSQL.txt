@@ -1,0 +1,96 @@
+# Creación de base de datos
+create database <nombre_basededatos>;
+
+CREATE USER 'Luis'@'localhost' IDENTIFIED BY 'Admin1234'; #usuario local
+
+GRANT ALL PRIVILEGES ON *.* TO 'Luis'@'localhost' WITH GRANT OPTION;
+
+CREATE USER 'Luis'@'%' IDENTIFIED BY 'Admin1234';  #usuario remoto
+ 
+GRANT ALL PRIVILEGES ON *.* TO 'Luis'@'%' WITH GRANT OPTION; 
+
+FLUSH PRIVILEGES;
+
+show databases (mostrar bases de datos creadas)
+
+use <nombrebasededatos> (usar la base de dato creada y trabajar en ella)
+
+CREATE TABLE nombre_tabla(
+    nombre_columna1 tipo_dato,
+    nombre_columna2 tipo_dato,
+    ...
+    PRIMARY KEY (nombre_columna1)
+
+)
+
+generationg1
+
+show tables (mostrar tablas en la base de datos que estamos trabajando)
+
+describe <nombredebasededatos> (conocer estructura de tabla)
+
+select * from <nombredeTabla>; (consultar la data en la tabla)
+
+// Insercion de registros
+INSERT INTO nombre_tabla(columna1,columna2....columnaN) VALUES (valor1,valor2.....valorN)
+
+INSERT INTO clientes(id,nombre,correo) VALUES (1,"Luis","Luis@gmail.com");
+
+UPDATE NOMBRE_TABLA //actualizar valores
+SET columnaAModificar = valor_a_insertar, columnaAModificar2 = valor_a_insertar2
+WHERE CONDICION
+
+-- modificar tabla
+ALTER TABLE nombre_tabla
+ADD nombre_columna tipo restriccion;
+
+--Eliminar tabla
+ALTER TABLE nombre_tabla
+DROP COLUMNN nombre_columna
+
+-- Relacionar tablas
+ALTER TABLE clientes
+ADD FOREIGN KEY (direccionId) REFERENCES direcciones(id);
+
+-- Relacionar tablas modo 2 
+ALTER TABLE clientes
+ADD CONSTRAINT FK_direccionId
+FOREIGN KEY (direccionId) REFERENCES direcciones(id);
+
+CREATE TABLE Registros_Alumnos(
+     id int NOT NULL AUTO_INCREMENT,
+     codigo_registro Varchar(30) NOT NULL,
+     rut Varchar(30) NOT NULL,
+    PRIMARY KEY (id)
+)
+
+CREATE TABLE alumnos(
+     id int NOT NULL AUTO_INCREMENT,
+     nombre Varchar(30) NOT NULL,
+     apellido Varchar(30) NOT NULL,
+     registro.id int,
+     direccion.id int,
+     curso.id int,		
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE alumnos
+ADD CONSTRAINT FK_direccion_id
+FOREIGN KEY (direccion_id) REFERENCES direcciones1(id)
+ADD CONSTRAINT FK_curso_id -- asignar nombre a la relacion
+FOREIGN KEY (curso_id) REFERENCES cursos(id)
+ADD CONSTRAINT FK_registro_id -- asignar nombre a la relacion
+FOREIGN KEY (registro_id) REFERENCES registros(id)
+;
+
+SELECT*FROM Alumnos;
+SELECT*FROM Grupos g;
+
+select * 
+FROM Alumnos a
+inner join Grupos g 
+on a.grupo_id= g.id;
+
+
+
+
